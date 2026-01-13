@@ -24,7 +24,7 @@ env:
 
 jobs:
   integration:
-    uses: frzambra/test_ci_cd_challenge_container/.github/workflows/python-app.yml
+    uses: frzambra/test_ci_cd_challenge_container/.github/workflows/python-app.yml@main
     permissions:
       contents: read
 
