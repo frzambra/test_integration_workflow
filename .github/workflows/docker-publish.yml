@@ -23,7 +23,12 @@ env:
 
 
 jobs:
-  build:
+  call-build:
+    uses: frzambra/test_ci_cd_challenge_container/.github/workflows/python-app.yml@main
+      with:
+        python-version: "3.11"
+      secrets:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     runs-on: ubuntu-latest
     permissions:
