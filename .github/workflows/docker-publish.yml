@@ -23,21 +23,19 @@ env:
 
 
 jobs:
-  call-build:
-    uses: frzambra/test_ci_cd_challenge_container/.github/workflows/python-app.yml@main
-      with:
-        python-version: "3.11"
-      secrets:
-        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  integration:
+    uses: frzambra/test_ci_cd_challenge_container/.github/workflows/python-app.yml
+    permissions:
+      contents: read
 
+  build:
+    needs: [integration]
     runs-on: ubuntu-latest
     permissions:
       contents: read
       packages: write
-      # This is used to complete the identity challenge
-      # with sigstore/fulcio when running outside of PRs.
       id-token: write
-
+      
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
